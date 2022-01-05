@@ -26,11 +26,11 @@ using namespace std;
 // void goo(int a, int b = 100){}
 // > 컴파일러는 어떤 함수를 호출하지 결정할 수 없습니다. - 컴파일 오류
 
-int squaure(int x)
+int square(int x)
 {
     return x * x;
 }
-double squaure(double x)
+double square(double x)
 {
     return x * x;
 }
@@ -38,6 +38,15 @@ char square(char c)
 {
     return c *c ;
 }
+
+//오버로딩 규칙
+// 1) 정확한 타입을 찾습니다.
+//  square(42) -> square(int)
+// 2) 상승
+//  square(42) -> square(long)
+// 3) 호환
+//  square(int) -> square(char)
+
 
 int main()
 {
