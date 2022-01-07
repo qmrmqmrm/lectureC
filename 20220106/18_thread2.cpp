@@ -19,9 +19,13 @@ void *thread_routine(void *arg) {
   printf("%s\n", (char *)arg);
 
     for (int i = 0; i < 1000000; ++i) {
+        
+        // sum += 1; // 값이 이상하게 나온다.
+       
         // --------
         pthread_mutex_lock(&g_mutex);
         sum += 1;
+        
         pthread_mutex_unlock(&g_mutex);
         // -- 임계 영역
         // -- 오직 한개의 스레드만 접근 가능하도록 해야합니다.
@@ -56,7 +60,6 @@ int main() {
     for (int i = 0; i<2; ++i)
     {
         pthread_join(thread[i], nullptr);
-
     }
   printf("sum: %d\n", sum);
 }

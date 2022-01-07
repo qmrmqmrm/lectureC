@@ -12,7 +12,7 @@ using namespace std;
 //  - protected
 //     : 외부에서는 접근이 불가능하고, 자식 클래스를 통해서는 접근이 가능합니다.
 
-//    public
+//  - public
 //     : 어디에서든 접근이 가능합니다.
 
 class User {
