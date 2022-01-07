@@ -9,6 +9,9 @@ private:
     int x, y;
     /* data */
 public:
+
+    //this: 멤버 함수를 호출한 객체의 주소가 전달됩니다.
+    //  객체 주소값
     void set(int a, int b) 
     {
         x = a;
@@ -49,8 +52,8 @@ int main()
     Point p1;
     Point p2;
 
-    p1.set(10,20);
-    p2.set(20,30);
+    p1.set(10,20); // Point::set(&p1, 10,20)
+    p2.set(20,30); // Point::set(&p2, 20,30)
 
     cout << &p1<< endl;
     p1.foo();

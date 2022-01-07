@@ -1,26 +1,35 @@
+// 21_virtual2.cpp
 #include <iostream>
 using namespace std;
-
 class Animal {
-  // public:
- protected:
-  Animal() {}
+public:
+    int age;
 };
 
 class Dog : public Animal {
- public:
-  // Dog() {}
-  Dog() : Animal() {}
+public:
+    int color;
 };
 
-// protected 생성자의 의도
-// "자신 타입의 객체는 생성할 수 없지만, 파생 클래스 타입의 객체는 생성 할 수
-// 있다."
+class Cat : public Animal {
+};
 
-int main() {
-  // Animal a;  // error! 외부에서 protected 생성자를 접근할 수 없습니다.
-  Dog d;  // ok!
-          // Dog의 생성자를 먼저 호출하고, Dog의 생성자 안에서 Animal의 생성자를
-          // 호출합니다. 파생 클래스에서는 기반 클래스의 protected 멤버에 접근이
-          // 가능합니다.
+int main()
+{
+    Animal* p1 = new Dog;
+
+    Dog d;
+    Cat c;
+    Animal* p2 = &d;
+    // Animal* p2 = &c;
+
+    // 부모의 포인터 타입을 자식의 포인터 타입으로의 암묵적 변환은 허용되지
+    // 않습니다.
+    // => 명시적인 캐스팅이 필요합니다.
+    Dog* pDog = static_cast<Dog*>(p2);
+    // 잘못된 자식 클래스로 캐스팅의 위험성 존재
+
+    // 다운 캐스팅은 잘못된 자식 타입으로 캐스팅 되는 위험이 있습니다.
+    // dynamic_cast<>
+
 }
