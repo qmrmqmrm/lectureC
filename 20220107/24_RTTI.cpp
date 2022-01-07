@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 using namespace std;
 //RTTI(Run-Time Type Information)
@@ -9,8 +7,6 @@ class CAR{
     public:
         virtual ~CAR(){}
         int color=200;
-    
-
 };
 
 //부모 소멸자가 가상이면 자식 클래스의 소멸자도 가상입니다.
@@ -19,7 +15,6 @@ class Sedan : public CAR{
         
         int speed=100;
 };
-
 
 void Go(CAR* p)
 {
@@ -48,8 +43,6 @@ void Go(CAR* p)
         cout <<"p는 sadan 타입이 아닙니다."<< endl;
     }
 
-
-
     // cout <<t.name() <<endl;
     // 문제점 : 
     //  1. type_info를 통해 얻을 수 있는 문자열 이름이
@@ -57,8 +50,25 @@ void Go(CAR* p)
     //     > 컴파일러마다 다른 결과가 나옵니다.
     //  2. type_info는 가상함수 테이블 안에 존재 합니다. 
 
+}
 
+void Go2(CAR* p)
+{
+    //실행시간에 하위 캐스팅을 타입 체크를 수행하면서 하고 싶다.
+    // => dynamic_cast
+    // 가상함수 테이블을 이용합니다.
 
+    Sedan* s1 = static_cast<Sedan*>(p); // 부모클래스도 바꿔준다
+    Sedan* s2 = dynamic_cast<Sedan*>(p);// 부모클래스는 nullptr로 반환한다.
+
+    cout << s1 <<endl;
+    cout << s2 <<endl;
+    cout << endl;
+
+    if (s2 != nullptr)
+    {
+        cout << "speed :" <<s2->speed<<endl;
+    }
 }
 
 int main()
@@ -67,6 +77,8 @@ int main()
     Sedan s;
     Go(&c);
     Go(&s);
+    Go2(&c);
+    Go2(&s);
 
 }
 
