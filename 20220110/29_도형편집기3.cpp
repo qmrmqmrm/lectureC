@@ -26,6 +26,7 @@ class Shape{
         DrawImpl();
         m.unlock();
     }
+
     virtual void DrawImpl()
     {
         cout<<"Shape draw"<< endl;
@@ -45,6 +46,7 @@ class Rect: public Shape
     {
         cout<<"Rect draw"<< endl;
     }
+
     Shape* Clone() override
     {
         return new Rect(*this);
@@ -58,6 +60,7 @@ class Circle: public Shape
     {
         cout<<"Circle draw"<< endl;
     }
+    
     Shape* Clone() override
     {
         return new Circle(*this);
