@@ -24,15 +24,15 @@ int main()
 {
     int x[10] = { 1, 3, 5, 7, 9, 2, 4, 6, 8, 10};
     // Sort(x, 10);
-    Sort(x, 10, &cmp1);
+    Sort(x, 10, &cmp1);  // 오름차순
     for (int e: x)
     {
-        cout << e<< endl;
+        cout << e << endl;
     }
     cout <<endl;
-    Sort(x, 10, &cmp2);
+    Sort(x, 10, &cmp2);  // 내림차순
     for (int e: x)
     {
-        cout << e<< endl;
+        cout << e << endl;
     }
 }
