@@ -8,7 +8,6 @@ using namespace std;
 //   비롯되어야 합니다.
 class BaseMenu {
     std::string title;
-
 public:
     BaseMenu(const std::string& s)
         : title(s)
